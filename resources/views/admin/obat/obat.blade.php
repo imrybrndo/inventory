@@ -10,7 +10,6 @@
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         <div class="flex justify-between items-end mb-3">
             <div>
-                <a href="{{route('obat.create')}}" class="btn btn-neutral">Tambah</a>
                 <a href="{{route('cetakstokobat')}}" class="btn">Export PDF</a>
             </div>
             <div>

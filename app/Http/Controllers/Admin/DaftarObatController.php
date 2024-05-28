@@ -66,7 +66,7 @@ class DaftarObatController extends Controller
                 $existingObat->first()->update(['stokObat' => $totalJumlah]);
                 # code...
             } elseif ($existingObat->kondisi == 'tidak_layak') {
-                Obat::create([
+                $data = Obat::create([
                     'tanggalObat' => $request->tanggalObat,
                     'kodeObat' => $request->kodeObat,
                     'namaObat' => $request->namaObat,
@@ -75,6 +75,7 @@ class DaftarObatController extends Controller
                     'kondisi' => $request->kondisi,
                     'expired' => $request->expired
                 ]);
+                dd($data);
             }
         } else {
             Obat::create([
