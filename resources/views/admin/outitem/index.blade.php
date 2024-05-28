@@ -36,7 +36,7 @@
                         <th>Obat Keluar</th>
                         <th>Satuan</th>
                         <th>Stok Tersisa</th>
-                        <th>Aksi</th>
+                        {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                         <td class="text-center">{{$item->obatKeluar}}</td>
                         <td class="text-center">{{$item->satuan}}</td>
                         <td class="text-center">{{$item->sisaObat}}</td>
-                        <th>
+                        {{-- <th>
                             <!-- Open the modal using ID.showModal() method -->
                             <button class="btn btn-error btn-xs"
                                 onclick="my_modal_5{{$item->id}}.showModal()">hapus</button>
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </dialog>
-                        </th>
+                        </th> --}}
                     </tr>
                     @endforeach
                 </tbody>

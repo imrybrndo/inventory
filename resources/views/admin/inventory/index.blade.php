@@ -37,7 +37,7 @@
                             <th>Satuan</th>
                             <th>Kondisi</th>
                             <th>Tanggal Ekspayer</th>
-                            <th>Aksi</th>
+                            {{-- <th>Aksi</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -65,20 +65,36 @@
                             <td class="text-center">{{$item->satuan}}</td>
                             <td class="text-center">
                                 @if ($item->kondisi == 'layak')
-                                    Layak
+                                Layak
                                 @elseif($item->kondisi == 'tidak_layak')
-                                    Tidak Layak
+                                Tidak Layak
                                 @endif
                             </td>
-                            <td class="text-center">{{ \Carbon\Carbon::parse($item->expired)->diffInDays(\Carbon\Carbon::now()) }} hari lagi</td>
-                            <th>
+                            <td class="text-center">{{
+                                \Carbon\Carbon::parse($item->expired)->diffInDays(\Carbon\Carbon::now()) }} hari lagi
+                            </td>
+                            {{-- <th>
                                 <div class="flex justify-center items-center gap-1">
+                                    <!-- Open the modal using ID.showModal() method -->
+                                    <button class="btn btn-error btn-xs" onclick="my_modal_1{{$item->id}}.showModal()">open modal</button>
+                                    <dialog id="my_modal_1" class="modal">
+                                        <div class="modal-box">
+                                            <h3 class="font-bold text-lg">PERINGATAN!!</h3>
+                                            <p class="py-4">Apakah anda yakin ingin menghapus data ini?</p>
+                                            <div class="modal-action">
+                                                <form method="dialog">
+                                                    <!-- if there is a button in form, it will close the modal -->
+                                                    <button class="btn">Close</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </dialog>
                                     <button class="btn btn-xs btn-warning">edit</button>
                                     <form action="{{route('obat.destroy', $item->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-error btn-xs">hapus</button>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </th>
                         </tr>
