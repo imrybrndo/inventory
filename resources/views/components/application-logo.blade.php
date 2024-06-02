@@ -1,0 +1,1 @@
+<img src="{{asset('assets/logo_puskesmas.jpg')}}" class="h-20 w-auto" aria-hidden="true" alt="" srcset="">
