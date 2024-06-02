@@ -11,7 +11,7 @@
         <div class="flex justify-between items-end mb-3">
             <div>
                 <a href="{{route('obat.create')}}" class="btn btn-neutral">Tambah</a>
-                <a href="{{route('cetak.index')}}" class="btn">Export PDF</a>
+                <a href="{{route('cetak.index')}}" class="btn">Cetak PDF</a>
             </div>
             <div>
                 <form action="{{ route('obatkeluar.index') }}" method="GET">
@@ -36,7 +36,8 @@
                             <th>Obat Masuk</th>
                             <th>Satuan</th>
                             <th>Kondisi</th>
-                            <th>Tanggal Ekspayer</th>
+                            <th>Tanggal Kadaluwarsa</th>
+                            <th></th>
                             {{-- <th>Aksi</th> --}}
                         </tr>
                     </thead>
@@ -73,10 +74,37 @@
                             <td class="text-center">{{
                                 \Carbon\Carbon::parse($item->expired)->diffInDays(\Carbon\Carbon::now()) }} hari lagi
                             </td>
+                            <td>
+                                <!-- Open the modal using ID.showModal() method -->
+                                <button class="btn btn-xs btn-error"
+                                    onclick="my_modal_1{{$item->id}}.showModal()">hapus</button>
+                                <dialog id="my_modal_1{{$item->id}}" class="modal">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">Perhatian!!</h3>
+                                        <p class="py-4">Apakah anda yakin ingin menghapus data ini "{{$item->namaObat}}
+                                        </p>
+                                        <div class="modal-action">
+                                            <div class="flex">
+                                                <form action="{{route('obat.destroy',$item->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-neutral">Hapus</button>
+                                                </form>
+
+                                                <form method="dialog">
+                                                    <!-- if there is a button in form, it will close the modal -->
+                                                    <button class="btn">Tidak</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dialog>
+                            </td>
                             {{-- <th>
                                 <div class="flex justify-center items-center gap-1">
                                     <!-- Open the modal using ID.showModal() method -->
-                                    <button class="btn btn-error btn-xs" onclick="my_modal_1{{$item->id}}.showModal()">open modal</button>
+                                    <button class="btn btn-error btn-xs"
+                                        onclick="my_modal_1{{$item->id}}.showModal()">open modal</button>
                                     <dialog id="my_modal_1" class="modal">
                                         <div class="modal-box">
                                             <h3 class="font-bold text-lg">PERINGATAN!!</h3>

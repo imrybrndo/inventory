@@ -15,11 +15,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // $admin = User::create([
+        //     'name' => 'Head of Health Center',
+        //     'email' => 'hohc@gmail.com',
+        //     'password' => bcrypt('12345678')
+        // ]);
+        // $admin->assignRole('pengguna');
         $admin = User::create([
-            'name' => 'Head of Health Center',
-            'email' => 'hohc@gmail.com',
+            'name' => 'Apoteker',
+            'email' => 'apoteker01@gmail.com',
             'password' => bcrypt('12345678')
         ]);
-        $admin->assignRole('pengguna');
+        $admin->assignRole('admin');
     }
 }

@@ -35,7 +35,7 @@
                             <th>Obat Masuk</th>
                             <th>Satuan</th>
                             <th>Kondisi</th>
-                            <th>Tanggal Ekspayer</th>
+                            <th>Tanggal Kadaluwarsa</th>
                         </tr>
                     </thead>
                     <tbody>

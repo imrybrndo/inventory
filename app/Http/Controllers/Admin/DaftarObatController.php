@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DaftarObat;
-use App\Models\JumlahStokObat;
 use App\Models\Obat;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class DaftarObatController extends Controller
@@ -47,35 +45,44 @@ class DaftarObatController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'tanggalObat' => ['required', 'date'],
-        //     'kodeObat' => ['required', 'string', 'max:255'],
-        //     'namaObat' => ['required', 'string', 'max:255'],
-        //     'jumlah' => ['required'],
-        //     'satuan' => ['required'],
-        //     'kondisi' => ['required', 'string', 'max:255'],
-        //     'stokObat' => ['required'],
-        //     'expired' => ['required']
-        // ]);  
+        $this->validate($request, [
+            'tanggalObat' => ['required',],
+            'kodeObat' => ['required'],
+            'namaObat' => ['required'],
+            'jumlah' => ['required'],
+            'satuan' => ['required'],
+            'kondisi' => ['required'],
+            'expired' => ['required']
+        ]);
+        $data = DaftarObat::where('kondisi', 'layak')->get();
+        $totalData = $data->sum('jumlah');
         $existingObat = Obat::where('namaObat', $request->namaObat)->get();
         if ($existingObat->isNotEmpty()) {
             $existingObat = $existingObat->first();
-            if ($existingObat->kondisi == 'layak') {
-                $totalJumlah = $existingObat->sum('jumlah');
-                $totalJumlah += $request->jumlah;
-                $existingObat->first()->update(['stokObat' => $totalJumlah]);
-                # code...
-            } elseif ($existingObat->kondisi == 'tidak_layak') {
-                $data = Obat::create([
+            if ($request->input('kondisi') == 'layak') {
+                $result = $totalData + $request->jumlah;
+                $existingObat->first()->update(['stokObat' => $result]);
+                DaftarObat::create([
                     'tanggalObat' => $request->tanggalObat,
                     'kodeObat' => $request->kodeObat,
                     'namaObat' => $request->namaObat,
                     'satuan' => $request->satuan,
                     'jumlah' => $request->jumlah,
                     'kondisi' => $request->kondisi,
+                    'stokObat' => $request->jumlah,
                     'expired' => $request->expired
                 ]);
-                dd($data);
+            } elseif ($request->input('kondisi') == 'tidak_layak') {
+                DaftarObat::create([
+                    'tanggalObat' => $request->tanggalObat,
+                    'kodeObat' => $request->kodeObat,
+                    'namaObat' => $request->namaObat,
+                    'satuan' => $request->satuan,
+                    'jumlah' => $request->jumlah,
+                    'kondisi' => $request->kondisi,
+                    'stokObat' => $request->jumlah,
+                    'expired' => $request->expired
+                ]);
             }
         } else {
             Obat::create([
@@ -89,16 +96,6 @@ class DaftarObatController extends Controller
                 'expired' => $request->expired
             ]);
         }
-        DaftarObat::create([
-            'tanggalObat' => $request->tanggalObat,
-            'kodeObat' => $request->kodeObat,
-            'namaObat' => $request->namaObat,
-            'satuan' => $request->satuan,
-            'jumlah' => $request->jumlah,
-            'kondisi' => $request->kondisi,
-            'stokObat' => $request->jumlah,
-            'expired' => $request->expired
-        ]);
         return redirect()->route('obat.index')->with('toast_success', 'Data obat berhasil disimpan!');
     }
 
@@ -121,7 +118,6 @@ class DaftarObatController extends Controller
      */
     public function edit($id)
     {
-        
     }
 
     /**
@@ -144,6 +140,21 @@ class DaftarObatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = DaftarObat::findOrFail($id);
+        if ($data->kondisi == 'layak') {
+            $existingObat = Obat::where('namaObat', $data->namaObat)->first();
+            $a = $data->jumlah;
+            $b = $existingObat->stokObat;
+            $c = $b - $a;
+            if ($c < 0) {
+                $existingObat->delete();
+            } elseif ($c > 0) {
+                $existingObat->first()->update(['stokObat' => $c]);
+            }
+            $data->delete();
+        } elseif ($data->kondisi == 'tidak_layak') {
+            $data->delete();
+        }
+        return redirect()->route('obat.index')->with('toast_success', 'Berhasil!!');
     }
 }

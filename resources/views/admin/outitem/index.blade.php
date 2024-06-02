@@ -11,7 +11,7 @@
         <div class="flex justify-between items-end mb-3">
             <div>
                 <a href="{{route('obatkeluar.create')}}" class="btn btn-neutral mb-3">Transaksi Obat</a>
-                <a href="{{route('cetakobatkeluar')}}" class="btn">Export PDF</a>
+                <a href="{{route('cetakobatkeluar')}}" class="btn">Cetak PDF</a>
             </div>
             <div>
                 <form action="{{ route('obat.index') }}" method="GET">
@@ -36,6 +36,7 @@
                         <th>Obat Keluar</th>
                         <th>Satuan</th>
                         <th>Stok Tersisa</th>
+                        <th></th>
                         {{-- <th>Aksi</th> --}}
                     </tr>
                 </thead>
@@ -64,30 +65,31 @@
                         <td class="text-center">{{$item->obatKeluar}}</td>
                         <td class="text-center">{{$item->satuan}}</td>
                         <td class="text-center">{{$item->sisaObat}}</td>
-                        {{-- <th>
-                            <!-- Open the modal using ID.showModal() method -->
-                            <button class="btn btn-error btn-xs"
-                                onclick="my_modal_5{{$item->id}}.showModal()">hapus</button>
-                            <dialog id="my_modal_5{{$item->id}}" class="modal modal-bottom sm:modal-middle">
-                                <div class="modal-box">
-                                    <h3 class="font-bold text-lg">Perhatian!</h3>
-                                    <p class="py-4">Apakah anda yakin ingin mengahpus data "{{$item->namaObat}}"?</p>
-                                    <div class="modal-action">
-                                        <div class="flex gap-1">
-                                            <form action="{{route('obatkeluar.destroy', $item->id)}}" method="POST">
+                        <td>
+                            <div class="flex">
+                                <!-- Open the modal using ID.showModal() method -->
+                                <button class="btn btn-xs btn-error" onclick="my_modal_1{{$item->id}}.showModal()">hapus</button>
+                                <dialog id="my_modal_1{{$item->id}}" class="modal">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">Perhatian!</h3>
+                                        <p class="py-4">Apakah anda yakin ingin menghapus data "{{$item->namaObat}}"</p>
+                                        <div class="modal-action">
+                                            <div class="flex">
+                                                <form action="{{route('obatkeluar.destroy', $item->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-neutral">Hapus</button>
-                                            </form>
-                                            <form method="dialog">
-                                                <!-- if there is a button in form, it will close the modal -->
-                                                <button class="btn">Tidak</button>
-                                            </form>
+                                                <button class="btn btn-neutral">Hapus</button>
+                                                </form>
+                                                <form method="dialog">
+                                                    <!-- if there is a button in form, it will close the modal -->
+                                                    <button class="btn">Batal</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </dialog>
-                        </th> --}}
+                                </dialog>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

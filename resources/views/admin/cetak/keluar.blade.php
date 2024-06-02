@@ -147,7 +147,7 @@
                             @foreach ($data as $item)
                             <tr>
                                 <th>{{$no++}}</th>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggalObat)->format('d F Y') }}</td>
+                                <td>                                {{ \Carbon\Carbon::parse($item->tanggalObat)->translatedFormat('l, j F Y') }}</td>
                                 <td>{{$item->kodeObat}}</td>
                                 <td>{{$item->namaObat}}</td>
                                 <td>{{$item->stokObat}}</td>

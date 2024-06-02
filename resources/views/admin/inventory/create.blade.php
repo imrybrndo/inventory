@@ -15,30 +15,80 @@
                     <span class="label-text dark:text-white">Tanggal</span>
                 </div>
                 <input type="date" name="tanggalObat" class="input input-bordered w-full" />
+                @error('tanggalObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Tanggal obat tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text dark:text-white">Kode Obat</span>
                 </div>
                 <input type="text" name="kodeObat" class="input input-bordered w-full" />
+                @error('kodeObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Kode obat tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text dark:text-white">Nama Obat</span>
                 </div>
                 <input type="text" name="namaObat" class="input input-bordered w-full" />
+                @error('namaObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Nama obat tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text dark:text-white">Jumlah</span>
                 </div>
                 <input type="number" name="jumlah" class="input input-bordered w-full" />
+                @error('jumlah')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Jumlah tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text dark:text-white">Satuan</span>
                 </div>
                 <input type="text" name="satuan" class="input input-bordered w-full" />
+                @error('satuan')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Satuan tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control">
                 <div class="label">
@@ -49,12 +99,32 @@
                     <option value="layak">Layak</option>
                     <option value="tidak_layak">Tidak Layak</option>
                 </select>
+                @error('kondisi')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Kondisi tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text dark:text-white">Tanggal Ekspayer</span>
                 </div>
                 <input id="tanggal" type="date" name="expired" class="input input-bordered w-full" />
+                @error('expired')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Tanggal Ekspayer tidak boleh kosong!.</span>
+                </div>
+                @enderror
             </label>
 
             <div class="mt-4">

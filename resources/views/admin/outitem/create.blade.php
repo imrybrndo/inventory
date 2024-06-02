@@ -16,6 +16,16 @@
                     <span class="label-text">Kode Obat</span>
                 </div>
                 <input type="text" name="kodeObat" class="input input-bordered w-full" />
+                @error('kodeObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Kode obat tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <label class="form-control w-full">
@@ -23,6 +33,16 @@
                     <span class="label-text">Nama Obat</span>
                 </div>
                 <input type="text" name="namaObat" class="input input-bordered w-full" />
+                @error('namaObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Nama obat tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <label class="form-control w-full">
@@ -31,9 +51,19 @@
                 </div>
                 <select class="select select-bordered" name="stokObat">
                     @foreach ($data as $item)
-                        <option value="{{$item->stokObat}}">{{$item->namaObat}} - Stok Obat : {{$item->stokObat}}</option>
+                    <option value="{{$item->stokObat}}">{{$item->namaObat}} - Stok Obat : {{$item->stokObat}}</option>
                     @endforeach
                 </select>
+                @error('stokObat')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Stok obat tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <label class="form-control w-full">
@@ -41,6 +71,16 @@
                     <span class="label-text">Obat Keluar</span>
                 </div>
                 <input type="text" name="obatKeluar" class="input input-bordered w-full" />
+                @error('obatKeluar')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Obat keluar tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <label class="form-control w-full">
@@ -48,13 +88,33 @@
                     <span class="label-text">Satuan</span>
                 </div>
                 <input type="text" name="satuan" class="input input-bordered w-full" />
+                @error('satuan')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Satuan tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Tanggal</span>
                 </div>
-                <input type="date" name="tanggal" class="input input-bordered w-full" />
+                <input type="date" name="tanggalObat" class="input input-bordered w-full" />
+                @error('tanggal')
+                <div role="alert" class="alert alert-error mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Gagal! Kode obat tidak boleh kosong.</span>
+                </div>
+                @enderror
             </label>
 
             <script>

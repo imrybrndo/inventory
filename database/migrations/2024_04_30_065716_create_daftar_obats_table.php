@@ -18,10 +18,10 @@ return new class extends Migration
             $table->date('tanggalObat');
             $table->string('kodeObat');
             $table->string('namaObat');
-            $table->string('jumlah');
+            $table->integer('jumlah');
             $table->string('satuan');
             $table->string('kondisi');
-            $table->string('stokObat')->nullable();
+            $table->integer('stokObat')->nullable();
             $table->string('expired');
             $table->timestamps();
         });

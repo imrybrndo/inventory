@@ -53,13 +53,12 @@ class ObatKeluarController extends Controller
     {
 
         $this->validate($request, [
-            // 'tanggalObat' => ['required', 'date'],
-            // 'kodeObat' => ['required', 'string', 'max:255'],
-            // 'namaObat' => ['required', 'string', 'max:255'],
-            // 'stokObat' => ['required'],
-            // 'obatKeluar' => ['required'],
-            // 'satuan' => ['required'],
-            // 'sisaObat' => ['required']
+            'kodeObat' => 'required',
+            'namaObat' => 'required',
+            'stokObat' => 'required',
+            'obatKeluar' => 'required',
+            'satuan' => 'required',
+            'tanggalObat' => 'required'
         ]);
         $namaObat = $request->input('namaObat');
         $stokObat = $request->input('stokObat');
@@ -73,7 +72,7 @@ class ObatKeluarController extends Controller
         $obat = Obat::where('namaObat', $request->namaObat)->first();
         $obat->update(['stokObat' => $sisaObat]);
         ObatKeluar::create([
-            'tanggalObat' => date('d-m-y'),
+            'tanggalObat' => $request->tanggalObat,
             'kodeObat' => $request->kodeObat,
             'namaObat' => $request->namaObat,
             'stokObat' => $request->stokObat,
@@ -129,6 +128,6 @@ class ObatKeluarController extends Controller
     {
         $data = ObatKeluar::findOrFail($id);
         $data->delete();
-        return redirect()->route('obatkeluar.index')->with('success_toast', 'Data berhasil dihapus!');
+        return redirect()->route('obatkeluar.index')->with('toast_success', 'Berhasil!!');
     }
 }
